@@ -11,7 +11,7 @@ Aaron King
 
 We present a framework that integrates **geometric computation**, **prime-structured number theory**, **energy-based attention**, and **cryptographically secure AI systems** into a single architecture. At its core, the framework models information as **Signed Wheels**—tuples of angular phase, logarithmic magnitude, and polarity—operating on a circular manifold.
 
-Through seven experiments, we demonstrate:
+Through ten experiments, we demonstrate:
 
 1. **Geometric attention dynamics** minimize energy by 92% and converge to stable equilibria when balanced with repulsion forces.
 2. **Log-phase encoding** (`theta = 2pi * (log n mod 1)`) does **not** capture multiplicative factor structure (correlation = +0.08).
@@ -19,8 +19,11 @@ Through seven experiments, we demonstrate:
 4. **Geometric dynamics act as angular diffusion** (D ~ 1.22) that degrades factor structure unless explicitly constrained.
 5. **Structure-preserving corrections** (strength 0.5) maintain **78%** of the static factor correlation under dynamics.
 6. **Mobius twist topology** (unwrapped angle + polarity flips) does not improve factor detection, as winding is magnitude-driven rather than factor-driven.
+7. **Golden-ratio phase** (phi-phase) does not improve atomic mass prediction (p = 0.896), confirming phase terms carry no physical signal.
+8. **L-P-V trinity geometry** (120-degree basis) creates useful interaction features for mass prediction (5x RMSE improvement) but risks overfitting on small samples.
+9. **Mobius encoding of perfect numbers** shows positive delta (+0.297) but is not statistically significant (p = 0.390) due to insufficient sample size (n = 4).
 
-These results separate the contributions: the **representation** (prime-space encoding) captures factor structure; the **dynamics** (energy-based attention) are a separate mechanism for clustering and pattern formation. They are architecturally compatible but functionally independent.
+These results separate the contributions: the **representation** (prime-space encoding) captures factor structure; the **dynamics** (energy-based attention) are a separate mechanism for clustering and pattern formation. They are architecturally compatible but functionally independent. Neither geometric phase nor topological encoding adds detectable signal beyond what prime-space already provides.
 
 Additionally, we describe **SquidCode**, a streaming semantic proxy, and **Cryptocode**, a one-time pad system for securing AI instruction channels.
 
@@ -42,7 +45,7 @@ We investigate five domains:
 4. **Streaming Semantic Systems** (SquidCode)
 5. **Cryptographically Secured Agents** (Cryptocode)
 
-The result is a framework spanning mathematics, machine learning, systems architecture, and secure cognition — grounded in experimental results from seven controlled experiments.
+The result is a framework spanning mathematics, machine learning, systems architecture, and secure cognition — grounded in experimental results from ten controlled experiments.
 
 ---
 
@@ -290,9 +293,74 @@ Factor structure lives in the **direction** of prime-space vectors, not in the w
 
 ---
 
-## 8. Prime Rails and Spiral Structure
+## 8. Geometric Phase in Physical Systems
 
-### 8.1 6k±1 System
+### 8.1 Phi-Phase Mass Prediction (Experiment 008)
+
+Tested whether golden-ratio phase terms improve atomic mass prediction (Z = 1-30, train Z = 1-20, test Z = 21-30).
+
+| Model | RMSE (test) | MAPE (test) |
+|-------|------------|-------------|
+| Scale only (Z^(2/3), Z^2) | 1.069 | 57.96% |
+| + Prime structure | 1.065 | 57.94% |
+| + phi-phase | 1.025 | 56.83% |
+| + Random phase (mean) | 1.041 | 57.19% |
+
+Statistical tests:
+
+- phi coefficient: t = -0.133, **p = 0.896** (not significant)
+- phi vs random controls: z = -0.61, p = 0.271
+- Permutation test (n = 1000): p = 0.267
+- phi improvement (0.04 RMSE) sits within the random control distribution
+
+The scale terms (Z^(2/3), Z^2) carry all predictive power (p = 0.000002, p = 0.003). Neither prime structure nor golden-ratio phase contribute detectable signal.
+
+### 8.2 L-P-V Trinity Geometry (Experiment 009)
+
+Tested a 120-degree symmetric basis (Light, Pressure, Volume) for mass prediction:
+
+```
+e_L = (1, 0, 0)
+e_P = (-0.5, sqrt(3)/2, 0)
+e_V = (-0.5, -sqrt(3)/2, 0)
+T(Z) = Z^0.5 * e_L + Z^2 * e_P + Z^(2/3) * e_V
+```
+
+Best model (T_x, T_y, |T|): **RMSE = 0.211, MAPE = 20.23%** — 5x better than baseline (1.069). Paired t-test confirms significance (p = 0.0000) and permutation test for |T| reaches p = 0.006.
+
+Caveats:
+
+1. **Small sample**: 20 training points with 3 features = overfitting risk
+2. **Derived features**: T components are linear combinations of Z^0.5, Z^2, Z^(2/3) — no genuinely new information created by the 120-degree geometry
+3. **Feature count matters**: The 3-feature model beats the 2-feature baseline partly because it has more parameters
+4. **Kitchen sink fails**: Model with all 8 features does WORSE (RMSE = 0.491) — classic overfitting on small data
+5. **Basis rotation, not physics**: The 120-degree geometry creates useful interaction features through vector projection but is not discovering new physical laws
+
+---
+
+## 9. Topological Encoding of Special Numbers (Experiment 010)
+
+Tested whether Mobius encoding (unwrapped angle + sigma polarity per prime dimension) separates perfect numbers from matched magnitude controls.
+
+**Perfect numbers tested:** 6, 28, 496, 8128 (all have form 2^(p-1) * Mersenne_prime)
+**Controls:** 20 nearby composites matched by magnitude and factor count
+
+| Metric | Value | p-value |
+|--------|-------|---------|
+| Prime-space separability | 0.075 rad | 0.312 |
+| Mobius separability | 0.372 rad | 0.359 |
+| Delta (Mobius - Prime) | +0.297 | 0.390 |
+| Sigma flips (perfects vs controls) | 1.0 vs 0-2 | 0.762 |
+
+All four perfects show positive delta (Mobius pushes them further from controls), but nothing is statistically significant.
+
+**Why it fails:** Only 4 perfect numbers below 10,000. No statistical test can reach significance with 4 positives and 20 controls, regardless of effect size. The structural signal — all perfects have exactly 2 distinct prime factors with high exponent on 2 — is already captured by prime-space, leaving no room for Mobius to add detectable signal beyond what factor content already provides.
+
+---
+
+## 10. Prime Rails and Spiral Structure
+
+### 10.1 6k±1 System
 
 All primes > 3 lie on:
 
@@ -300,19 +368,19 @@ All primes > 3 lie on:
 
 This defines two **prime rails**.
 
-### 8.2 Geometric Interpretation
+### 10.2 Geometric Interpretation
 
 - Forms a **double helix in number space**
 - Reduces search space by 2/3
 - Creates **natural spacing structure**
 
-### 8.3 Relationship to Prime-Space
+### 10.3 Relationship to Prime-Space
 
 The 6k±1 rails are a 1D projection of the prime structure. The prime-space embedding (Section 4) captures the full multidimensional structure, which is why it achieves -0.91 correlation vs the +0.08 of 1D log-phase.
 
 ---
 
-## 9. Unified Energy Model
+## 11. Unified Energy Model
 
 The experimental results suggest a unified energy formulation:
 
@@ -330,51 +398,53 @@ Each term is independently grounded:
 
 | Term | Physical Meaning | Experimental Status |
 |------|-----------------|-------------------|
-| Z^(2/3) | Surface energy | Theoretical |
-| Z^2 | Coulomb repulsion | Theoretical |
-| alignment(v_hat) | Factor structure | **Proven (-0.91 correlation)** |
-| phase_error | Geometric phase | **Tested (log-phase fails)** |
-| topology_cost | Mobius topology | **Tested (no improvement)** |
+| Z^(2/3) | Surface energy | **Confirmed** (p = 0.000002) |
+| Z^2 | Coulomb repulsion | **Confirmed** (p = 0.003) |
+| alignment(v_hat) | Factor structure | **Proven** (-0.91 correlation) |
+| phase_error | Geometric phase | **Tested, fails** (p = 0.896) |
+| topology_cost | Mobius topology | **Tested, fails** (no improvement) |
+
+The surface and Coulomb terms carry all mass-prediction signal. The geometric phase and topology terms, while mathematically valid constructions, contribute nothing detectable.
 
 ---
 
-## 10. SquidCode: Streaming Semantic Computation
+## 12. SquidCode: Streaming Semantic Computation
 
-### 10.1 Architecture
+### 12.1 Architecture
 
 A real-time semantic proxy:
 
 Browser -> Squid Proxy -> ICAP -> Rewrite Pipeline -> LLM -> SSE -> Browser
 
-### 10.2 Key Features
+### 12.2 Key Features
 
 - Live text rewriting
 - Semantic caching
 - RAG integration
 - DOM hot-swapping
 
-### 10.3 Interpretation
+### 12.3 Interpretation
 
 > The web becomes a **live semantic field**, continuously rewritten.
 
 ---
 
-## 11. Cryptocode: Secure Cognitive Channels
+## 13. Cryptocode: Secure Cognitive Channels
 
-### 11.1 Core Principle
+### 13.1 Core Principle
 
 Instructions are only valid if:
 
 - Decrypted via shared OTP pad
 - Pass CRC32 + structure checks
 
-### 11.2 Security Guarantee
+### 13.2 Security Guarantee
 
 Ciphertext = Plaintext XOR Pad
 
 Injected text decrypts to noise and is rejected.
 
-### 11.3 Properties
+### 13.3 Properties
 
 - Information-theoretic security
 - Prompt injection impossible without pad
@@ -382,9 +452,9 @@ Injected text decrypts to noise and is rejected.
 
 ---
 
-## 12. Experimental Summary
+## 14. Experimental Summary
 
-Seven experiments were conducted to test the framework's core claims:
+Ten experiments were conducted to test the framework's core claims:
 
 | Exp | Question | Result | Key Metric |
 |-----|----------|--------|-----------|
@@ -395,12 +465,15 @@ Seven experiments were conducted to test the framework's core claims:
 | 005 | Do dynamics preserve factor structure? | **No** | -0.91 -> -0.14 |
 | 006 | Can corrections preserve structure? | **Partially** | 78% preserved |
 | 007 | Does Mobius twist help? | **No** | -0.17 correlation |
+| 008 | Does phi-phase predict mass? | **No** | p = 0.896 |
+| 009 | Does trinity geometry predict mass? | **Marginal** | 5x RMSE (overfitting risk) |
+| 010 | Does Mobius separate perfect numbers? | **No** | p = 0.390 (n = 4) |
 
 All experiments are reproducible. Code and results are in the `experiments/` directory.
 
 ---
 
-## 13. Computational Example
+## 15. Computational Example
 
 ```python
 import numpy as np
@@ -448,7 +521,7 @@ Output:
 
 ---
 
-## 14. Implications
+## 16. Implications
 
 ### Mathematics
 
@@ -472,24 +545,29 @@ Output:
 
 - The separation between representation and dynamics is fundamental
 - Not all geometric encodings preserve algebraic structure
-- Negative results constrain theory: log-phase fails, Mobius twist fails
+- Negative results constrain theory: log-phase fails, Mobius twist fails, phi-phase fails
 
 ---
 
-## 15. Limitations and Open Questions
+## 17. Limitations and Open Questions
 
 - **Scalability**: Prime-space dimensionality grows with the largest prime factor
 - **Learning**: Can a system discover prime-space structure without being given it?
 - **Dynamics-dynamics gap**: No dynamics have been found that enhance (only preserve) factor structure
 - **Mobius limitations**: Winding topology is magnitude-driven, not factor-driven
 - **Real-world deployment**: Cryptographic overhead, streaming latency
-- **Energy model**: The unified E(Z) formulation (Section 9) is theoretical and untested
+- **Energy model**: Surface/Coulomb terms confirmed (Section 11), but phase/topology terms fail
+- **Overfitting**: Trinity geometry shows 5x improvement but with only 20 training points and derived features — likely exploits basis rotation, not new physics
+- **Sample size**: Only 4 perfect numbers below 10,000 — insufficient for statistical testing of any topological hypothesis
+- **Feature derivation**: Trinity components are linear combinations of existing power laws, not genuinely new information
 
 ---
 
-## 16. Conclusion
+## 18. Conclusion
 
-We have presented a framework with three experimentally grounded results:
+We have presented a framework with three core experimentally grounded results and three additional negative results:
+
+**Positive results:**
 
 1. **Prime exponent vectors on the hypersphere** encode multiplicative structure as angular alignment (correlation -0.91, p ~ 0). Multiplication = direction alignment.
 
@@ -497,13 +575,20 @@ We have presented a framework with three experimentally grounded results:
 
 3. **Structure-preserving corrections** with strength 0.5 maintain 78% of the factor correlation under dynamics, establishing an optimal balance between dynamics and preservation.
 
-Two approaches were tested and found insufficient:
-- Log-phase encoding does not capture factor structure (+0.08 correlation)
-- Mobius twist topology does not improve factor detection (winding is magnitude-driven)
+**Negative results:**
 
-The framework separates into independent contributions: the **representation** (prime-space) captures algebraic structure; the **dynamics** (energy-based attention) provide clustering and pattern formation. They are architecturally compatible but do not synergize.
+4. Log-phase encoding does not capture factor structure (+0.08 correlation)
+5. Mobius twist topology does not improve factor detection (winding is magnitude-driven)
+6. Golden-ratio phase does not predict atomic mass (p = 0.896)
 
-> **Prime factorization has a natural geometric interpretation as angular alignment on the hypersphere. This encoding is exact, requires no training, and captures multiplicative structure that scalar and log-phase representations lose.**
+**Marginal results:**
+
+7. L-P-V trinity geometry shows 5x RMSE improvement for mass prediction but likely exploits basis rotation rather than discovering new physics, and overfitting is a concern on 20 training points.
+8. Mobius encoding of perfect numbers shows positive delta (+0.297) but cannot reach significance with only 4 samples.
+
+The framework separates into independent contributions: the **representation** (prime-space) captures algebraic structure; the **dynamics** (energy-based attention) provide clustering and pattern formation. They are architecturally compatible but do not synergize. Geometric phase and topological encoding add no detectable signal beyond what prime-space already provides.
+
+> **Prime factorization has a natural geometric interpretation as angular alignment on the hypersphere. This encoding is exact, requires no training, and captures multiplicative structure that scalar and log-phase representations lose. No tested geometric or topological embellishment improves upon it.**
 
 ---
 
