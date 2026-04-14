@@ -11,7 +11,7 @@ Aaron King
 
 We present a framework that integrates **geometric computation**, **prime-structured number theory**, **energy-based attention**, and **cryptographically secure AI systems** into a single architecture. At its core, the framework models information as **Signed Wheels**—tuples of angular phase, logarithmic magnitude, and polarity—operating on a circular manifold.
 
-Through ten experiments, we demonstrate:
+Through sixteen experiments, we demonstrate:
 
 1. **Geometric attention dynamics** minimize energy by 92% and converge to stable equilibria when balanced with repulsion forces.
 2. **Log-phase encoding** (`theta = 2pi * (log n mod 1)`) does **not** capture multiplicative factor structure (correlation = +0.08).
@@ -22,8 +22,14 @@ Through ten experiments, we demonstrate:
 7. **Golden-ratio phase** (phi-phase) does not improve atomic mass prediction (p = 0.896), confirming phase terms carry no physical signal.
 8. **L-P-V trinity geometry** (120-degree basis) creates useful interaction features for mass prediction (5x RMSE improvement) but risks overfitting on small samples.
 9. **Mobius encoding of perfect numbers** shows positive delta (+0.297) but is not statistically significant (p = 0.390) due to insufficient sample size (n = 4).
+10. **No phase transform** of any kind (16 tested, including log, power-law, and hybrid) causes primes to cluster in phase space beyond what the density gradient explains.
+11. **No geometric constant** (phi, sqrt(2), e, pi, random) carries prime-specific signal on the 6k±1 rails (phi exactly 1.00x average among constants).
+12. **Log-spiral embedding** adds zero information: AUC improvement from angular component = +0.0000 over radial component alone.
+13. **The Prime Number Theorem** (2/log(n) on rails) explains prime density completely (r = 0.982, residual SNR = 1.1 — within binomial noise).
+14. **Composite coverage** is circular — coverage(n) = 0 is the definition of primality, not a discovery (100% of primes have coverage=0, 0% of composites).
+15. **Composite neighborhood fields** add nothing beyond PNT (AUC improvement = -0.0001, Cohen's d = +0.005, permutation p = 0.15-0.30).
 
-These results separate the contributions: the **representation** (prime-space encoding) captures factor structure; the **dynamics** (energy-based attention) are a separate mechanism for clustering and pattern formation. They are architecturally compatible but functionally independent. Neither geometric phase nor topological encoding adds detectable signal beyond what prime-space already provides.
+These results separate the contributions: the **representation** (prime-space encoding) captures factor structure; the **dynamics** (energy-based attention) are a separate mechanism for clustering and pattern formation. They are architecturally compatible but functionally independent. Six rigorous experiments (011-016) systematically test and reject all geometric, phase, spiral, and field-based approaches to prime structure. The PNT density law is the complete description of prime spatial organization on the 6k±1 lattice.
 
 Additionally, we describe **SquidCode**, a streaming semantic proxy, and **Cryptocode**, a one-time pad system for securing AI instruction channels.
 
@@ -45,7 +51,7 @@ We investigate five domains:
 4. **Streaming Semantic Systems** (SquidCode)
 5. **Cryptographically Secured Agents** (Cryptocode)
 
-The result is a framework spanning mathematics, machine learning, systems architecture, and secure cognition — grounded in experimental results from ten controlled experiments.
+The result is a framework spanning mathematics, machine learning, systems architecture, and secure cognition — grounded in experimental results from sixteen controlled experiments.
 
 ---
 
@@ -358,25 +364,117 @@ All four perfects show positive delta (Mobius pushes them further from controls)
 
 ---
 
-## 10. Prime Rails and Spiral Structure
+## 10. Systematic Tests of Geometric Prime Structure
 
-### 10.1 6k±1 System
+Six experiments (011-016) systematically test whether geometric, phase-based, spiral, or field-based encodings carry information about prime numbers beyond the density law. All six return negative results.
 
-All primes > 3 lie on:
+### 10.1 The 6k±1 Lattice
 
-6k - 1, 6k + 1
+All primes > 3 lie on two rails:
 
-This defines two **prime rails**.
+```
+6k - 1:  5, 11, 17, 23, 29, ...
+6k + 1:  7, 13, 19, 25, 31, ...
+```
 
-### 10.2 Geometric Interpretation
+The Prime Number Theorem on rails gives density ~ 2/log(n). This density gradient is the dominant spatial structure of primes.
 
-- Forms a **double helix in number space**
-- Reduces search space by 2/3
-- Creates **natural spacing structure**
+### 10.2 Phase Transform Scan (Experiment 011)
 
-### 10.3 Relationship to Prime-Space
+Tested whether any phase transform theta(n) causes primes to cluster in phase space. Sixteen transforms tested (log family, log-log family, power laws, hybrids) with 200,000 integers.
 
-The 6k±1 rails are a 1D projection of the prime structure. The prime-space embedding (Section 4) captures the full multidimensional structure, which is why it achieves -0.91 correlation vs the +0.08 of 1D log-phase.
+**Result:** Five transforms appear "significant" by variance test, but controls reveal all are artifacts:
+- Density correction explains 56-98% of the variance signal
+- Local permutation (shuffling labels within k-neighborhoods) eliminates all significance
+- Composites show the SAME phase structure as primes (ratio = 1.00 for n^1.0)
+- No transform produces signal beyond the PNT density gradient
+
+Golden-ratio (phi) tests confirm phi is not special:
+- phi is 1.14x WORSE than average among constants
+- TITAN phi resonance: 0.97x (worse than random)
+
+### 10.3 6k±1 Rail Phase Structure (Experiment 012)
+
+Tested phase within individual 6k±1 rails (66,000 lattice points). This eliminates contamination from multiples of 2 and 3.
+
+**Result:** No signal on either rail:
+- phi exactly 1.00x average among tested constants
+- Local permutation: z < 0 for all constants (weaker than chance)
+- Rail asymmetry: all p > 0.99 (6k-1 and 6k+1 are perfectly symmetric)
+- KS tests between prime and composite phase distributions: no separation
+
+### 10.4 Log-Spiral Embedding (Experiment 013)
+
+Tested the full 2D spiral embedding r = log(k), theta = alpha * log(k), with AUC prediction as the metric.
+
+**Result:** All constants produce identical AUC:
+
+| Constant | AUC (6k-1) | AUC (6k+1) |
+|----------|------------|------------|
+| phi      | 0.5359     | 0.5316     |
+| sqrt(2)  | 0.5359     | 0.5316     |
+| e        | 0.5359     | 0.5316     |
+| pi       | 0.5359     | 0.5316     |
+| random   | 0.5359     | 0.5316     |
+
+**Kill shot:** AUC using only r = log(k) = 0.5359. Improvement from adding theta = +0.0000.
+
+The log-spiral is a reparameterization of log(k) into 2D polar coordinates. The angular component carries literally zero information about primality.
+
+### 10.5 Radial Structure — PNT Verification (Experiment 014)
+
+Tested whether the Prime Number Theorem (2/log(n)) fully explains prime density on the 6k±1 rails, up to 1 million.
+
+**Result:** PNT is the complete story:
+- Correlation: r = 0.982 (2/log(n) explains 96.5% of density variance)
+- Residual SNR = 1.10 (within binomial noise — no structure beyond PNT)
+- Gap autocorrelation: significant at all lags, but entirely explained by pooling across the density gradient
+- Twin primes: 8,168 pairs, observed/predicted (Hardy-Littlewood) = 1.181 — consistent with established theory
+- Curvature: matches PNT prediction
+
+The density law 2/log(n) is the complete description of prime spatial organization. All apparent "structure" in gaps, autocorrelations, and phase patterns comes from pooling across density gradients.
+
+### 10.6 Composite Coverage (Experiment 015)
+
+Tested whether the number of lattice factorizations of 6k±1 predicts primality.
+
+**Result:** The experiment is circular:
+- Coverage(n) = number of ways to factor n on the 6k±1 lattice
+- Coverage = 0 means "no factorization exists" — which IS the definition of prime
+- 100.0% of primes have coverage = 0, 0.0% of composites have coverage = 0
+- Permutation test: z = +0.000, p = 1.000 — the "signal" is the definition itself
+
+Neighbor suppression test (non-circular version): primes are actually MORE common in high-coverage neighborhoods (0.305 vs 0.234) — the opposite of the predicted exclusion effect. This is the density gradient artifact.
+
+### 10.7 EXOR Field Test (Experiment 016)
+
+Tested whether the LOCAL density of composite factorizations around n (in log-space neighborhoods) predicts primality — without using n's own factorizations. This is the non-circular version of the composite coverage idea.
+
+**Result:** Composite fields add nothing:
+- Raw signal (primes at 93% of composite field values) is 100% density gradient
+- After k-correction: only 1/50 k-bins significant (exactly chance level)
+- AUC improvement from adding field to k: **-0.0001** (field hurts prediction)
+- Field-only AUC (0.530-0.533) is the density gradient leaking through
+- Permutation test: p = 0.15 to 0.30
+- Cohen's d = +0.005 (zero effect size)
+- 0% of k-bins have |d| > 0.2
+
+Multiplication is combinatorial, not wave-like. Composites do not create detectable spatial fields.
+
+### 10.8 Synthesis
+
+These six experiments constitute a systematic falsification of the hypothesis that geometric, phase, or field-based encodings carry prime-specific information:
+
+| Approach | What it tests | Result |
+|----------|--------------|--------|
+| Phase transforms | Does any phase cause prime clustering? | No (artifact) |
+| Rail phase | Does phase work within 6k±1 rails? | No (phi = average) |
+| Spiral embedding | Does 2D spiral geometry help? | No (theta = +0.0000) |
+| PNT verification | Does density explain everything? | Yes (SNR = 1.1) |
+| Composite coverage | Do factorization counts predict? | Circular (definition) |
+| Composite fields | Do neighborhood fields predict? | No (d = +0.005) |
+
+The answer is consistent and definitive: **the PNT density law (2/log(n)) is the complete spatial description of primes on the 6k±1 lattice.** No geometric reparameterization creates new information. No composite field effect exists. Primes are not spatially organized beyond the smooth density gradient predicted by analytic number theory.
 
 ---
 
@@ -454,7 +552,7 @@ Injected text decrypts to noise and is rejected.
 
 ## 14. Experimental Summary
 
-Ten experiments were conducted to test the framework's core claims:
+Sixteen experiments were conducted to test the framework's core claims:
 
 | Exp | Question | Result | Key Metric |
 |-----|----------|--------|-----------|
@@ -468,6 +566,12 @@ Ten experiments were conducted to test the framework's core claims:
 | 008 | Does phi-phase predict mass? | **No** | p = 0.896 |
 | 009 | Does trinity geometry predict mass? | **Marginal** | 5x RMSE (overfitting risk) |
 | 010 | Does Mobius separate perfect numbers? | **No** | p = 0.390 (n = 4) |
+| 011 | Does any phase transform detect primes? | **No** | All artifacts (density) |
+| 012 | Does phase work within 6k±1 rails? | **No** | phi = 1.00x average |
+| 013 | Does spiral geometry add information? | **No** | theta adds +0.0000 AUC |
+| 014 | Does PNT explain prime density fully? | **Yes** | r=0.982, SNR=1.1 |
+| 015 | Does composite coverage predict primes? | **Circular** | coverage=0 IS primality |
+| 016 | Do composite fields predict primes? | **No** | d=+0.005, AUC=-0.0001 |
 
 All experiments are reproducible. Code and results are in the `experiments/` directory.
 
@@ -528,6 +632,8 @@ Output:
 - Multiplication corresponds to angular alignment in prime-exponent space
 - Primes serve as basis vectors for a geometric number representation
 - The Fundamental Theorem of Arithmetic has a natural hypersphere interpretation
+- The Prime Number Theorem is the complete spatial description of prime density on the 6k±1 lattice (r = 0.982, SNR = 1.1)
+- No phase, spiral, or field encoding carries prime-specific spatial signal beyond the density gradient
 
 ### Machine Learning
 
@@ -560,12 +666,15 @@ Output:
 - **Overfitting**: Trinity geometry shows 5x improvement but with only 20 training points and derived features — likely exploits basis rotation, not new physics
 - **Sample size**: Only 4 perfect numbers below 10,000 — insufficient for statistical testing of any topological hypothesis
 - **Feature derivation**: Trinity components are linear combinations of existing power laws, not genuinely new information
+- **Density gradient confound**: The PNT density gradient (1/log(n)) creates apparent clustering in any encoding that correlates with n. All 16 experiments confirm this is the sole source of apparent spatial signal. Any future geometric hypothesis about primes must control for this gradient.
+- **Exhaustiveness**: Experiments 011-016 test phase, spiral, coverage, and field-based approaches. They do not test every possible geometric encoding, but the consistent null results across increasingly general approaches strongly suggest no geometric encoding carries prime-specific signal.
+- **Zeta-zero connection**: The Riemann explicit formula psi(x) = x - sum(x^(1/2+igamma)/(1/2+igamma)) does encode primes as a sum of oscillations in log-space. This is established analytic number theory, not a new discovery. The oscillations are determined by zeta zeros, not by any geometric constant or composite field.
 
 ---
 
 ## 18. Conclusion
 
-We have presented a framework with three core experimentally grounded results and three additional negative results:
+We have presented a framework with three core experimentally grounded results and nine additional negative results:
 
 **Positive results:**
 
@@ -580,15 +689,26 @@ We have presented a framework with three core experimentally grounded results an
 4. Log-phase encoding does not capture factor structure (+0.08 correlation)
 5. Mobius twist topology does not improve factor detection (winding is magnitude-driven)
 6. Golden-ratio phase does not predict atomic mass (p = 0.896)
+7. No phase transform of any kind (16 tested) causes prime clustering beyond the density gradient
+8. No geometric constant (phi, sqrt(2), e, pi, random) carries prime-specific signal on 6k±1 rails
+9. Log-spiral embedding adds zero information over radial component alone (AUC improvement = +0.0000)
+10. Composite coverage is circular — coverage=0 is the definition of primality
+11. Composite neighborhood fields add nothing beyond PNT (Cohen's d = +0.005, AUC = -0.0001)
+
+**Definitive result from experiments 014-016:**
+
+12. The Prime Number Theorem (2/log(n) on rails, r = 0.982, SNR = 1.1) is the complete spatial description of primes. No geometric, phase, spiral, or field-based approach adds detectable signal beyond this density law.
 
 **Marginal results:**
 
-7. L-P-V trinity geometry shows 5x RMSE improvement for mass prediction but likely exploits basis rotation rather than discovering new physics, and overfitting is a concern on 20 training points.
-8. Mobius encoding of perfect numbers shows positive delta (+0.297) but cannot reach significance with only 4 samples.
+13. L-P-V trinity geometry shows 5x RMSE improvement for mass prediction but likely exploits basis rotation rather than discovering new physics, and overfitting is a concern on 20 training points.
+14. Mobius encoding of perfect numbers shows positive delta (+0.297) but cannot reach significance with only 4 samples.
 
-The framework separates into independent contributions: the **representation** (prime-space) captures algebraic structure; the **dynamics** (energy-based attention) provide clustering and pattern formation. They are architecturally compatible but do not synergize. Geometric phase and topological encoding add no detectable signal beyond what prime-space already provides.
+The framework separates into independent contributions: the **representation** (prime-space) captures algebraic structure; the **dynamics** (energy-based attention) provide clustering and pattern formation. They are architecturally compatible but do not synergize. Six rigorous experiments (011-016) systematically test and reject all geometric, phase, spiral, and field-based approaches to prime structure.
 
-> **Prime factorization has a natural geometric interpretation as angular alignment on the hypersphere. This encoding is exact, requires no training, and captures multiplicative structure that scalar and log-phase representations lose. No tested geometric or topological embellishment improves upon it.**
+The density gradient (PNT) creates the illusion of spatial structure in primes. Any encoding that maps n to a position in any space will show primes "clustering" in the region corresponding to small n — where primes are simply more common. Once this density gradient is controlled for, no residual spatial organization remains.
+
+> **Prime factorization has a natural geometric interpretation as angular alignment on the hypersphere. This encoding is exact, requires no training, and captures multiplicative structure that scalar and log-phase representations lose. No tested geometric, phase, spiral, or field-based approach improves upon it or detects prime-specific spatial structure beyond the PNT density law.**
 
 ---
 
