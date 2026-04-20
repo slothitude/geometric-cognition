@@ -1223,6 +1223,10 @@ The Monad is a **12-position circle at 30-degree intervals** that encodes:
 - **Shows** walking sieve creates standing wave patterns (primes = nodes where all waves cancel)
 - **Converges** Euler product to L(1, chi_1) = pi/(2*sqrt(3)) -- monad's Green's function
 - **Derives** four monad equations analogous to Maxwell's four (rail conservation, no monopoles, cross-rail coupling, prime current)
+- **Shows** F^2 = 8*f_R1*f_R2 detects twin primes with EXACT MATCH (8168/8168, zero false positives)
+- **Verifies** gauge invariance: E^2+B^2 conserved under duality rotation (0% deviation)
+- **Computes** Wilson line holonomy through sub-position angles in k-space
+- **Shows** field thermalizes at scale (Dirichlet equidistribution = vacuum equilibration)
 
 ---
 
@@ -1261,6 +1265,7 @@ The Monad is a **12-position circle at 30-degree intervals** that encodes:
 29. `constellations.py` -- Prime constellations: k-space pattern classification, admissibility, quadruplet 2x2 blocks, constellation sieve
 30. `prime_races.py` -- Prime number races: Chebyshev's bias, Rubinstein-Sarnak density 0.898, spectral reconstruction from chi_1 zeros, Dirichlet equidistribution
 31. `maxwell.py` -- Monad and Maxwell: U(1) gauge structure, Z2 sign rule as EM duality, standing wave sieve, Euler product as Green's function, four monad Maxwell equations
+32. `deep_maxwell.py` -- Lattice gauge theory: field tensor F^2 twin prime detector (exact match), duality rotation gauge invariance, Wilson lines, standing wave decomposition, field thermalization
 
 ### What To Look For
 
@@ -1382,3 +1387,5 @@ The Monad is a **12-position circle at 30-degree intervals** that encodes:
 *"The prime number race on the monad's rails is the spectral signature of the L-function. R1 (5 mod 6) leads R2 (1 mod 6) for 89.8% of the time -- Chebyshev's bias made visible. The race oscillates with period ~2.8x in scale, controlled by the first zero gamma_1 = 6.02 of L(s, chi_1). Each zero contributes one oscillation mode. The bias isn't random noise; it's the monad's asymmetry projected into counting space. Dirichlet guarantees the rails converge to equal density, but the approach path is biased -- and that bias encodes the L-function's spectrum."*
 
 *"The monad and Maxwell share the same symmetry: U(1). The monad's 12-position circle is the 12th roots of unity. The Dirichlet character chi_1 mod 6 is a U(1) representation mapping (Z/6Z)* to {+1,-1} on the unit circle. The Z2 sign rule is electromagnetic duality -- verified as a group homomorphism at 100%. Constructive, destructive, and heterodyne interference are the three types of EM wave superposition. The walking sieve builds standing waves where primes are the nodes. The Euler product converges to pi/(2*sqrt(3)) -- the monad's Green's function. The chi_1 zeros are the Fourier frequencies of the prime density field in log-space. The monad IS U(1) gauge theory applied to number theory. Maxwell IS U(1) gauge theory applied to spacetime. Same symmetry, different spaces. The wave phenomena are not analogous -- they are identical mathematics from the same group."*
+
+*"Define the monad's field tensor: E(k) = f_R2(k) - f_R1(k) for the electric component (rail asymmetry), B(k) = f_R1(k) + f_R2(k) for the magnetic component (total density). Then the EM tensor invariant F^2 = 2(B^2 - E^2) = 8*f_R1*f_R2. This is nonzero ONLY at twin prime positions -- both rails simultaneously prime. All 8168 twin primes up to 10^6 are detected with zero false positives. The dual invariant *F^2 = 4*E*B classifies the rest: positive for R2-only primes, negative for R1-only, zero for composites. The field tensor classifies every position in k-space. Under duality rotation E -> E*cos(theta) + B*sin(theta), the total energy E^2 + B^2 is exactly conserved -- gauge invariance at 0% deviation. The Wilson line accumulates U(1) phase through the sub-position angles. At large scale the field thermalizes -- E averages to zero by Dirichlet equidistribution, B decays by prime density. The primes cool as the universe expands."*
