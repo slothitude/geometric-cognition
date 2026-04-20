@@ -1150,6 +1150,7 @@ The Monad is a **12-position circle at 30-degree intervals** that encodes:
 | **CAN extremals** | f(2) and f(3) saturate, ALL growth from f(rail), S_rail >= 9/pi^2, P_rail < log(n) | 692 CANs verified |
 | **Twin primes** | Same-k opposite-rail pairs, assassination principle (no single killer), 15.7x faster sieve | 100% verified |
 | **Goldbach** | n mod 6 constrains rail combos, n=0mod6 has 2.018x more partitions, 3+R1/R2 100% correct | Verified to 10^6 |
+| **Constellations** | All patterns as k-space (offset,rail) pairs, quadruplet=2x2 block, 11 admissible patterns in 2x2 space | 100% verified |
 
 ### What It Does NOT Do
 
@@ -1211,6 +1212,9 @@ The Monad is a **12-position circle at 30-degree intervals** that encodes:
 - **Predicts** n=0mod6 has 2x more Goldbach partitions (observed 2.018x) — dual-rail advantage
 - **Makes** exact 3+R1/R2 predictions that are 100% correct for all n up to 100K
 - **Explains** the Goldbach comet's band structure as monad residue classes
+- **Classifies** all prime constellations as fixed k-space (offset, rail) patterns
+- **Shows** quadruplet = 2x2 grid block and 2x3 block is inadmissible (blocked by p=5)
+- **Finds** 11 admissible patterns in the 2x2 k-space alphabet, all verified
 
 ---
 
@@ -1246,6 +1250,7 @@ The Monad is a **12-position circle at 30-degree intervals** that encodes:
 26. `robin_extremals.py` -- CAN monad decomposition: f(2)/f(3) saturation, rail Euler product 9/pi^2, P_rail < log(n)
 27. `twin_primes.py` -- Twin primes in k-space: assassination principle, dual-rail sieve, gap distribution, Brun's constant
 28. `goldbach.py` -- Goldbach through the monad: n mod 6 rail constraints, comet bands, 3+R1/R2 prediction, verified to 10^6
+29. `constellations.py` -- Prime constellations: k-space pattern classification, admissibility, quadruplet 2x2 blocks, constellation sieve
 
 ### What To Look For
 
@@ -1285,6 +1290,7 @@ The Monad is a **12-position circle at 30-degree intervals** that encodes:
 - **Gap structure**: sexy (6) 20.2%, twin (2) 12.8%, cousin (4) 12.7% -- cross-rail vs same-rail
 - **Goldbach constraint**: n mod 6 fixes rail combo — R1+R1 (4mod6), R2+R2 (2mod6), R1+R2 (0mod6)
 - **Goldbach comet bands** = monad residue classes; n=0mod6 band is 2.018x higher (dual-rail)
+- **Constellation alphabet**: 11 admissible patterns in 2x2 k-space; quadruplet = 2x2 block
 
 ### Open Directions
 
@@ -1316,7 +1322,9 @@ The Monad is a **12-position circle at 30-degree intervals** that encodes:
 - Do cousin primes (gap=4) and twin primes (gap=2) have the same monad structure?
 - Can the Goldbach partition ratio (2.018x) be derived analytically from the monad?
 - Does the k-space convolution formula g(6m) = sum R1[k]*R2[m-k] have a spectral interpretation?
-- Can prime constellations (triplets, quadruplets) be classified by monad k-space patterns?
+- Can prime constellations (triplets, quadruplets) be classified by monad k-space patterns? (DONE: 018cc)
+- Can the constellation sieve be extended to arbitrary admissible patterns (generalized Hardy-Littlewood)?
+- Does the k-space pattern framework yield new constraints on constellation density?
 
 ---
 
@@ -1354,3 +1362,5 @@ The Monad is a **12-position circle at 30-degree intervals** that encodes:
 *"Twin primes are the monad's dual-rail phenomenon. Every twin prime pair (6k-1, 6k+1) sits at the same k-index on opposite rails. No single prime can kill both rails at the same position -- the assassination principle is a lattice theorem. Each composite twin requires two separate killers, one per rail. The monad's walking sieve finds twin primes 15.7x faster than brute force. The rails are slightly anti-correlated: twin primes are 11.3% rarer than independence would predict. The gap structure reveals the monad's geometry: sexy primes (gap=6, same rail) dominate at 20.2%, while cross-rail gaps (twin=2, cousin=4) each run about 12-13%."*
 
 *"Goldbach's conjecture, seen through the monad, becomes a rail assignment problem. The residue of n mod 6 exactly determines which rail combinations can form Goldbach partitions: R1+R1 for n=4mod6, R2+R2 for n=2mod6, R1+R2 for n=0mod6. The monad predicts n=0mod6 should have twice as many partitions because it draws from both rails. The data confirms: exactly 2.018x. The Goldbach comet's mysterious band structure -- known for decades but unexplained -- is simply the monad's residue classes. The comet has three bands because there are three ways to partition an even number into primes on the rails."*
+
+*"Prime constellations in k-space become pattern-matching problems. Every constellation maps to a fixed set of (k-offset, rail) pairs. Twin primes: same k, both rails. Cousin primes: adjacent k, both rails. Sexy primes: same rail, adjacent k. The quadruplet is a perfect 2x2 grid block. The monad enumerates all 11 admissible patterns using just 2 consecutive k-positions and 2 rails. The 2x3 block is inadmissible because prime 5 covers all residues mod 5 -- the monad's sieve kills at least one position. Prime constellations aren't random gaps between numbers; they're geometric patterns surviving the lattice walk."*
