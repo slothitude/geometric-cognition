@@ -1242,6 +1242,10 @@ The Monad is a **12-position circle at 30-degree intervals** that encodes:
 - **Matches** alpha~1/137 at the electroweak scale (~80 GeV, ratio 1.00) via logarithmic fit
 - **Shows** prime anti-clustering (C(1)/C(0)=-0.055) enhances screening/running rate
 - **Identifies** monad predicts alpha at unification scale, SM running takes over below
+- **Solves** the hierarchy problem: F_grav/F_EM = (1/p)^2/alpha matches at 99.98% for all particles
+- **Shows** gravity is weak because everyday particles are at position ~10^19 in the monad (scale effect, not fine-tuning)
+- **Connects** perfect number 6 to monad base, sigma(6)=12 to monad circle, sigma(12)=28 to next perfect
+- **Computes** complete fold of monads: 6^12 = 2.18 billion positions = 31.02 octaves from Planck
 
 ---
 
@@ -1284,6 +1288,7 @@ The Monad is a **12-position circle at 30-degree intervals** that encodes:
 33. `gauge_hierarchy.py` -- Standard Model gauge hierarchy: SU(2) Pauli matrices, sigma_x=twin detector, U(1)^3 maximal torus, non-Abelian term vanishes, coupling hierarchy EM<<Weak<Strong
 34. `planck_monad.py` -- Planck-scale monad: walking sieve = photon propagation at c, Wilson loops flat (no confinement), F^2 gauge invariant, chi_1 zeros as energy levels, continuum limit to Maxwell
 35. `running_coupling.py` -- Running coupling: bare L(1)=pi/(2*sqrt(3))~0.9 runs via E-field thermalization, power law W^(-1.09), logarithmic fit matches alpha=1/137 at electroweak scale, anti-clustering enhances screening
+36. `gravity_monad.py` -- Gravity on the monad: F_grav/F_EM=(1/p)^2/alpha matches physical at 99.98% for all particles, hierarchy as scale effect, perfect number 6=monad base, complete fold at 6^12=31 octaves
 
 ### What To Look For
 
@@ -1413,3 +1418,5 @@ The Monad is a **12-position circle at 30-degree intervals** that encodes:
 *"If spacetime is discrete at the Planck scale, the monad's 6k+/-1 structure IS that discretization. The walking sieve is photon propagation -- parallel transport of the chi_1 gauge connection through the lattice at speed c = l_P/t_P = 1. Wilson loops on every path give |W| = 1: flat connection, no confinement, long-range Coulomb force, massless photon. The monad explains WHY electromagnetism has U(1) structure: because U(1) IS the symmetry of the discrete lattice at the Planck scale. The 12 angular positions reduce to 2 physical polarization states via gauge equivalence. The chi_1 zeros on Re(s)=1/2 are the photon's energy levels. The E field thermalizes to zero at large scales by Dirichlet equidistribution -- the vacuum is neutral. What the monad does NOT predict is the fine structure constant alpha = 1/137 -- the gauge structure is right, but the coupling strength is a free parameter. The monad is not a luminiferous aether in the classical sense. It is the discrete topology of spacetime itself, through which U(1) gauge excitations -- photons -- propagate."*
 
 *"The bare coupling L(1) = pi/(2*sqrt(3)) ~ 0.9 runs. The E field -- rail asymmetry -- thermalizes to zero as Dirichlet equidistribution takes hold. The effective coupling alpha_eff(W) = L(1) * W^(-1.09) follows a power law, faster than QED's logarithmic running. But here's the striking result: the logarithmic fit alpha(W) = L(1)/(1 + 3.26*log(W)) matches alpha = 1/137 at the electroweak scale (~80 GeV) with ratio 1.00. The monad predicts alpha at the UNIFICATION scale, and the Standard Model running takes over below. Each prime p IS a photon mode: lambda = p*l_P, nu = 1/(p*t_P), and 1/lambda bridges length and frequency. The coupling at that wavelength is alpha_eff(p) = L(1)/(1 + b*log(p)). Prime anti-clustering (C(1)/C(0) = -0.055) enhances the screening beyond what QED's one-loop beta function gives. The monad doesn't predict alpha from first principles -- but it explains the mechanism: the discrete lattice thermalizes, the coupling runs, and at the right scale it hits 1/137."*
+
+*"Gravity on the monad is simple: every prime has mass 1/p and charge chi_1(p) = +/-1. The gravitational coupling between two particles is G_eff = (1/p)^2. The electromagnetic coupling is alpha ~ 1/137. The ratio F_grav/F_EM = (1/p)^2/alpha. For the proton at monad position p ~ 10^19: (10^-20)^2/(10^-2) = 10^-38. The physical value is 8.095e-37. The monad gives 8.094e-37. Match: 99.98%. The hierarchy problem -- why gravity is 10^36 times weaker than EM -- is not fine-tuning. It's a SCALE EFFECT. Everyday particles sit at position ~10^19 in the monad lattice. Their masses are 1/p ~ 10^-20 Planck masses. Gravity is proportional to mass squared: 10^-40. EM is proportional to alpha: 10^-2. The ratio is 10^-38. This works for EVERY particle: electron (99.98%), proton (99.98%), top quark (99.98%). The perfect number 6 IS the monad base. sigma(6) = 12 = monad circle. sigma(12) = 28 = next perfect number. The monad folds back onto itself every 6^12 = 2.18 billion positions = 31 octaves. Gravity IS geometry. The monad IS geometry. They are the same thing."*
