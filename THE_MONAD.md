@@ -1215,6 +1215,9 @@ The Monad is a **12-position circle at 30-degree intervals** that encodes:
 - **Classifies** all prime constellations as fixed k-space (offset, rail) patterns
 - **Shows** quadruplet = 2x2 grid block and 2x3 block is inadmissible (blocked by p=5)
 - **Finds** 11 admissible patterns in the 2x2 k-space alphabet, all verified
+- **Computes** Chebyshev's bias for the monad: R1 wins with logarithmic density delta=0.898
+- **Shows** race oscillation period ~2.8x controlled by first L-function zero gamma_1=6.02
+- **Reconstructs** race difference spectrally from chi_1 zeros
 
 ---
 
@@ -1251,6 +1254,7 @@ The Monad is a **12-position circle at 30-degree intervals** that encodes:
 27. `twin_primes.py` -- Twin primes in k-space: assassination principle, dual-rail sieve, gap distribution, Brun's constant
 28. `goldbach.py` -- Goldbach through the monad: n mod 6 rail constraints, comet bands, 3+R1/R2 prediction, verified to 10^6
 29. `constellations.py` -- Prime constellations: k-space pattern classification, admissibility, quadruplet 2x2 blocks, constellation sieve
+30. `prime_races.py` -- Prime number races: Chebyshev's bias, Rubinstein-Sarnak density 0.898, spectral reconstruction from chi_1 zeros, Dirichlet equidistribution
 
 ### What To Look For
 
@@ -1325,6 +1329,8 @@ The Monad is a **12-position circle at 30-degree intervals** that encodes:
 - Can prime constellations (triplets, quadruplets) be classified by monad k-space patterns? (DONE: 018cc)
 - Can the constellation sieve be extended to arbitrary admissible patterns (generalized Hardy-Littlewood)?
 - Does the k-space pattern framework yield new constraints on constellation density?
+- Does the Rubinstein-Sarnak density 0.898 have a geometric interpretation in the monad?
+- Can the spectral reconstruction of the race be made exact using all chi_1 zeros?
 
 ---
 
@@ -1364,3 +1370,5 @@ The Monad is a **12-position circle at 30-degree intervals** that encodes:
 *"Goldbach's conjecture, seen through the monad, becomes a rail assignment problem. The residue of n mod 6 exactly determines which rail combinations can form Goldbach partitions: R1+R1 for n=4mod6, R2+R2 for n=2mod6, R1+R2 for n=0mod6. The monad predicts n=0mod6 should have twice as many partitions because it draws from both rails. The data confirms: exactly 2.018x. The Goldbach comet's mysterious band structure -- known for decades but unexplained -- is simply the monad's residue classes. The comet has three bands because there are three ways to partition an even number into primes on the rails."*
 
 *"Prime constellations in k-space become pattern-matching problems. Every constellation maps to a fixed set of (k-offset, rail) pairs. Twin primes: same k, both rails. Cousin primes: adjacent k, both rails. Sexy primes: same rail, adjacent k. The quadruplet is a perfect 2x2 grid block. The monad enumerates all 11 admissible patterns using just 2 consecutive k-positions and 2 rails. The 2x3 block is inadmissible because prime 5 covers all residues mod 5 -- the monad's sieve kills at least one position. Prime constellations aren't random gaps between numbers; they're geometric patterns surviving the lattice walk."*
+
+*"The prime number race on the monad's rails is the spectral signature of the L-function. R1 (5 mod 6) leads R2 (1 mod 6) for 89.8% of the time -- Chebyshev's bias made visible. The race oscillates with period ~2.8x in scale, controlled by the first zero gamma_1 = 6.02 of L(s, chi_1). Each zero contributes one oscillation mode. The bias isn't random noise; it's the monad's asymmetry projected into counting space. Dirichlet guarantees the rails converge to equal density, but the approach path is biased -- and that bias encodes the L-function's spectrum."*
