@@ -1227,6 +1227,10 @@ The Monad is a **12-position circle at 30-degree intervals** that encodes:
 - **Verifies** gauge invariance: E^2+B^2 conserved under duality rotation (0% deviation)
 - **Computes** Wilson line holonomy through sub-position angles in k-space
 - **Shows** field thermalizes at scale (Dirichlet equidistribution = vacuum equilibration)
+- **Computes** SU(2) Pauli matrices on isospin doublet: sigma_z=E, sigma_x=twin prime detector (exact match)
+- **Shows** non-Abelian field strength vanishes: monad captures U(1)^3 maximal torus, not full SU(2)×SU(3)
+- **Reproduces** coupling hierarchy: EM (0.0005) << Weak (0.116) < Strong (0.661)
+- **Shows** 12=2×2×3 is the torus decomposition of fermion representation space
 
 ---
 
@@ -1266,6 +1270,7 @@ The Monad is a **12-position circle at 30-degree intervals** that encodes:
 30. `prime_races.py` -- Prime number races: Chebyshev's bias, Rubinstein-Sarnak density 0.898, spectral reconstruction from chi_1 zeros, Dirichlet equidistribution
 31. `maxwell.py` -- Monad and Maxwell: U(1) gauge structure, Z2 sign rule as EM duality, standing wave sieve, Euler product as Green's function, four monad Maxwell equations
 32. `deep_maxwell.py` -- Lattice gauge theory: field tensor F^2 twin prime detector (exact match), duality rotation gauge invariance, Wilson lines, standing wave decomposition, field thermalization
+33. `gauge_hierarchy.py` -- Standard Model gauge hierarchy: SU(2) Pauli matrices, sigma_x=twin detector, U(1)^3 maximal torus, non-Abelian term vanishes, coupling hierarchy EM<<Weak<Strong
 
 ### What To Look For
 
@@ -1389,3 +1394,5 @@ The Monad is a **12-position circle at 30-degree intervals** that encodes:
 *"The monad and Maxwell share the same symmetry: U(1). The monad's 12-position circle is the 12th roots of unity. The Dirichlet character chi_1 mod 6 is a U(1) representation mapping (Z/6Z)* to {+1,-1} on the unit circle. The Z2 sign rule is electromagnetic duality -- verified as a group homomorphism at 100%. Constructive, destructive, and heterodyne interference are the three types of EM wave superposition. The walking sieve builds standing waves where primes are the nodes. The Euler product converges to pi/(2*sqrt(3)) -- the monad's Green's function. The chi_1 zeros are the Fourier frequencies of the prime density field in log-space. The monad IS U(1) gauge theory applied to number theory. Maxwell IS U(1) gauge theory applied to spacetime. Same symmetry, different spaces. The wave phenomena are not analogous -- they are identical mathematics from the same group."*
 
 *"Define the monad's field tensor: E(k) = f_R2(k) - f_R1(k) for the electric component (rail asymmetry), B(k) = f_R1(k) + f_R2(k) for the magnetic component (total density). Then the EM tensor invariant F^2 = 2(B^2 - E^2) = 8*f_R1*f_R2. This is nonzero ONLY at twin prime positions -- both rails simultaneously prime. All 8168 twin primes up to 10^6 are detected with zero false positives. The dual invariant *F^2 = 4*E*B classifies the rest: positive for R2-only primes, negative for R1-only, zero for composites. The field tensor classifies every position in k-space. Under duality rotation E -> E*cos(theta) + B*sin(theta), the total energy E^2 + B^2 is exactly conserved -- gauge invariance at 0% deviation. The Wilson line accumulates U(1) phase through the sub-position angles. At large scale the field thermalizes -- E averages to zero by Dirichlet equidistribution, B decays by prime density. The primes cool as the universe expands."*
+
+*"The monad captures the Standard Model's maximal torus -- the Cartan subalgebra U(1)^3. Three Dirichlet characters mod 12 give three independent Z2 charges: chi_1 for isospin (R1/R2), chi_2 for rail type, chi_3 for quark/lepton. The SU(2) Pauli matrices act on the isospin doublet: sigma_z = E(k) measures the electric field, sigma_x = 2*f_R1*f_R2 detects twin primes exactly. But the non-Abelian field strength vanishes -- the commutator F_NA = 2*E*sigma_x is zero everywhere because at twin primes E=0 while sigma_x is nonzero, and at single-rail primes sigma_x=0. The monad sees the Abelian shadow of the Standard Model, not the full non-Abelian structure. The coupling hierarchy is naturally reproduced: electromagnetic coupling (Chebyshev bias) = 0.0005, weak coupling (twin prime rate) = 0.116, strong coupling (cross-generation rate) = 0.661. The ratio is 1:212:1208. The 12 monad positions decompose as 2 x 2 x 3 -- exactly the torus decomposition of the Standard Model fermion space. The monad IS the Standard Model seen through its Abelian projection."*
