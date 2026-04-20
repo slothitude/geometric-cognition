@@ -1231,6 +1231,12 @@ The Monad is a **12-position circle at 30-degree intervals** that encodes:
 - **Shows** non-Abelian field strength vanishes: monad captures U(1)^3 maximal torus, not full SU(2)×SU(3)
 - **Reproduces** coupling hierarchy: EM (0.0005) << Weak (0.116) < Strong (0.661)
 - **Shows** 12=2×2×3 is the torus decomposition of fermion representation space
+- **Maps** monad to Planck-scale spacetime: lattice spacing = l_P, walking sieve = photon propagation at c = l_P/t_P
+- **Proves** Wilson loops are flat (|W|=1) on the monad lattice = no confinement = long-range EM
+- **Shows** photon mass = 0 exactly from gauge invariance (F^2 invariant under duality rotation at 0% deviation)
+- **Finds** 48 chi_1 zeros on Re(s)=1/2 as photon energy spectrum (Planck-scale energy levels)
+- **Shows** E field thermalizes to 0 at large scale (Dirichlet equidistribution = vacuum neutrality)
+- **Demonstrates** continuum limit: discrete monad lattice -> smooth Maxwell equations
 
 ---
 
@@ -1271,6 +1277,7 @@ The Monad is a **12-position circle at 30-degree intervals** that encodes:
 31. `maxwell.py` -- Monad and Maxwell: U(1) gauge structure, Z2 sign rule as EM duality, standing wave sieve, Euler product as Green's function, four monad Maxwell equations
 32. `deep_maxwell.py` -- Lattice gauge theory: field tensor F^2 twin prime detector (exact match), duality rotation gauge invariance, Wilson lines, standing wave decomposition, field thermalization
 33. `gauge_hierarchy.py` -- Standard Model gauge hierarchy: SU(2) Pauli matrices, sigma_x=twin detector, U(1)^3 maximal torus, non-Abelian term vanishes, coupling hierarchy EM<<Weak<Strong
+34. `planck_monad.py` -- Planck-scale monad: walking sieve = photon propagation at c, Wilson loops flat (no confinement), F^2 gauge invariant, chi_1 zeros as energy levels, continuum limit to Maxwell
 
 ### What To Look For
 
@@ -1396,3 +1403,5 @@ The Monad is a **12-position circle at 30-degree intervals** that encodes:
 *"Define the monad's field tensor: E(k) = f_R2(k) - f_R1(k) for the electric component (rail asymmetry), B(k) = f_R1(k) + f_R2(k) for the magnetic component (total density). Then the EM tensor invariant F^2 = 2(B^2 - E^2) = 8*f_R1*f_R2. This is nonzero ONLY at twin prime positions -- both rails simultaneously prime. All 8168 twin primes up to 10^6 are detected with zero false positives. The dual invariant *F^2 = 4*E*B classifies the rest: positive for R2-only primes, negative for R1-only, zero for composites. The field tensor classifies every position in k-space. Under duality rotation E -> E*cos(theta) + B*sin(theta), the total energy E^2 + B^2 is exactly conserved -- gauge invariance at 0% deviation. The Wilson line accumulates U(1) phase through the sub-position angles. At large scale the field thermalizes -- E averages to zero by Dirichlet equidistribution, B decays by prime density. The primes cool as the universe expands."*
 
 *"The monad captures the Standard Model's maximal torus -- the Cartan subalgebra U(1)^3. Three Dirichlet characters mod 12 give three independent Z2 charges: chi_1 for isospin (R1/R2), chi_2 for rail type, chi_3 for quark/lepton. The SU(2) Pauli matrices act on the isospin doublet: sigma_z = E(k) measures the electric field, sigma_x = 2*f_R1*f_R2 detects twin primes exactly. But the non-Abelian field strength vanishes -- the commutator F_NA = 2*E*sigma_x is zero everywhere because at twin primes E=0 while sigma_x is nonzero, and at single-rail primes sigma_x=0. The monad sees the Abelian shadow of the Standard Model, not the full non-Abelian structure. The coupling hierarchy is naturally reproduced: electromagnetic coupling (Chebyshev bias) = 0.0005, weak coupling (twin prime rate) = 0.116, strong coupling (cross-generation rate) = 0.661. The ratio is 1:212:1208. The 12 monad positions decompose as 2 x 2 x 3 -- exactly the torus decomposition of the Standard Model fermion space. The monad IS the Standard Model seen through its Abelian projection."*
+
+*"If spacetime is discrete at the Planck scale, the monad's 6k+/-1 structure IS that discretization. The walking sieve is photon propagation -- parallel transport of the chi_1 gauge connection through the lattice at speed c = l_P/t_P = 1. Wilson loops on every path give |W| = 1: flat connection, no confinement, long-range Coulomb force, massless photon. The monad explains WHY electromagnetism has U(1) structure: because U(1) IS the symmetry of the discrete lattice at the Planck scale. The 12 angular positions reduce to 2 physical polarization states via gauge equivalence. The chi_1 zeros on Re(s)=1/2 are the photon's energy levels. The E field thermalizes to zero at large scales by Dirichlet equidistribution -- the vacuum is neutral. What the monad does NOT predict is the fine structure constant alpha = 1/137 -- the gauge structure is right, but the coupling strength is a free parameter. The monad is not a luminiferous aether in the classical sense. It is the discrete topology of spacetime itself, through which U(1) gauge excitations -- photons -- propagate."*
