@@ -1218,6 +1218,11 @@ The Monad is a **12-position circle at 30-degree intervals** that encodes:
 - **Computes** Chebyshev's bias for the monad: R1 wins with logarithmic density delta=0.898
 - **Shows** race oscillation period ~2.8x controlled by first L-function zero gamma_1=6.02
 - **Reconstructs** race difference spectrally from chi_1 zeros
+- **Maps** the monad to Maxwell's equations: both are U(1) gauge structures in different spaces
+- **Verifies** Z2 sign rule as EM duality (group homomorphism chi_1(a)*chi_1(b) = chi_1(ab mod 6), 100%)
+- **Shows** walking sieve creates standing wave patterns (primes = nodes where all waves cancel)
+- **Converges** Euler product to L(1, chi_1) = pi/(2*sqrt(3)) -- monad's Green's function
+- **Derives** four monad equations analogous to Maxwell's four (rail conservation, no monopoles, cross-rail coupling, prime current)
 
 ---
 
@@ -1255,6 +1260,7 @@ The Monad is a **12-position circle at 30-degree intervals** that encodes:
 28. `goldbach.py` -- Goldbach through the monad: n mod 6 rail constraints, comet bands, 3+R1/R2 prediction, verified to 10^6
 29. `constellations.py` -- Prime constellations: k-space pattern classification, admissibility, quadruplet 2x2 blocks, constellation sieve
 30. `prime_races.py` -- Prime number races: Chebyshev's bias, Rubinstein-Sarnak density 0.898, spectral reconstruction from chi_1 zeros, Dirichlet equidistribution
+31. `maxwell.py` -- Monad and Maxwell: U(1) gauge structure, Z2 sign rule as EM duality, standing wave sieve, Euler product as Green's function, four monad Maxwell equations
 
 ### What To Look For
 
@@ -1331,6 +1337,8 @@ The Monad is a **12-position circle at 30-degree intervals** that encodes:
 - Does the k-space pattern framework yield new constraints on constellation density?
 - Does the Rubinstein-Sarnak density 0.898 have a geometric interpretation in the monad?
 - Can the spectral reconstruction of the race be made exact using all chi_1 zeros?
+- Does the monad-Maxwell analogy extend to non-Abelian gauge groups (SU(2) = weak, SU(3) = strong)?
+- Can the walking sieve's standing wave structure be derived from the monad's U(1) gauge field?
 
 ---
 
@@ -1372,3 +1380,5 @@ The Monad is a **12-position circle at 30-degree intervals** that encodes:
 *"Prime constellations in k-space become pattern-matching problems. Every constellation maps to a fixed set of (k-offset, rail) pairs. Twin primes: same k, both rails. Cousin primes: adjacent k, both rails. Sexy primes: same rail, adjacent k. The quadruplet is a perfect 2x2 grid block. The monad enumerates all 11 admissible patterns using just 2 consecutive k-positions and 2 rails. The 2x3 block is inadmissible because prime 5 covers all residues mod 5 -- the monad's sieve kills at least one position. Prime constellations aren't random gaps between numbers; they're geometric patterns surviving the lattice walk."*
 
 *"The prime number race on the monad's rails is the spectral signature of the L-function. R1 (5 mod 6) leads R2 (1 mod 6) for 89.8% of the time -- Chebyshev's bias made visible. The race oscillates with period ~2.8x in scale, controlled by the first zero gamma_1 = 6.02 of L(s, chi_1). Each zero contributes one oscillation mode. The bias isn't random noise; it's the monad's asymmetry projected into counting space. Dirichlet guarantees the rails converge to equal density, but the approach path is biased -- and that bias encodes the L-function's spectrum."*
+
+*"The monad and Maxwell share the same symmetry: U(1). The monad's 12-position circle is the 12th roots of unity. The Dirichlet character chi_1 mod 6 is a U(1) representation mapping (Z/6Z)* to {+1,-1} on the unit circle. The Z2 sign rule is electromagnetic duality -- verified as a group homomorphism at 100%. Constructive, destructive, and heterodyne interference are the three types of EM wave superposition. The walking sieve builds standing waves where primes are the nodes. The Euler product converges to pi/(2*sqrt(3)) -- the monad's Green's function. The chi_1 zeros are the Fourier frequencies of the prime density field in log-space. The monad IS U(1) gauge theory applied to number theory. Maxwell IS U(1) gauge theory applied to spacetime. Same symmetry, different spaces. The wave phenomena are not analogous -- they are identical mathematics from the same group."*
