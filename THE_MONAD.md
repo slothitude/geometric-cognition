@@ -1237,6 +1237,11 @@ The Monad is a **12-position circle at 30-degree intervals** that encodes:
 - **Finds** 48 chi_1 zeros on Re(s)=1/2 as photon energy spectrum (Planck-scale energy levels)
 - **Shows** E field thermalizes to 0 at large scale (Dirichlet equidistribution = vacuum neutrality)
 - **Demonstrates** continuum limit: discrete monad lattice -> smooth Maxwell equations
+- **Shows** bare coupling L(1)~0.9 runs via E-field thermalization (renormalization group flow)
+- **Finds** running law alpha(W) = L(1)*W^(-1.09) -- power law, faster than QED logarithmic
+- **Matches** alpha~1/137 at the electroweak scale (~80 GeV, ratio 1.00) via logarithmic fit
+- **Shows** prime anti-clustering (C(1)/C(0)=-0.055) enhances screening/running rate
+- **Identifies** monad predicts alpha at unification scale, SM running takes over below
 
 ---
 
@@ -1278,6 +1283,7 @@ The Monad is a **12-position circle at 30-degree intervals** that encodes:
 32. `deep_maxwell.py` -- Lattice gauge theory: field tensor F^2 twin prime detector (exact match), duality rotation gauge invariance, Wilson lines, standing wave decomposition, field thermalization
 33. `gauge_hierarchy.py` -- Standard Model gauge hierarchy: SU(2) Pauli matrices, sigma_x=twin detector, U(1)^3 maximal torus, non-Abelian term vanishes, coupling hierarchy EM<<Weak<Strong
 34. `planck_monad.py` -- Planck-scale monad: walking sieve = photon propagation at c, Wilson loops flat (no confinement), F^2 gauge invariant, chi_1 zeros as energy levels, continuum limit to Maxwell
+35. `running_coupling.py` -- Running coupling: bare L(1)=pi/(2*sqrt(3))~0.9 runs via E-field thermalization, power law W^(-1.09), logarithmic fit matches alpha=1/137 at electroweak scale, anti-clustering enhances screening
 
 ### What To Look For
 
@@ -1405,3 +1411,5 @@ The Monad is a **12-position circle at 30-degree intervals** that encodes:
 *"The monad captures the Standard Model's maximal torus -- the Cartan subalgebra U(1)^3. Three Dirichlet characters mod 12 give three independent Z2 charges: chi_1 for isospin (R1/R2), chi_2 for rail type, chi_3 for quark/lepton. The SU(2) Pauli matrices act on the isospin doublet: sigma_z = E(k) measures the electric field, sigma_x = 2*f_R1*f_R2 detects twin primes exactly. But the non-Abelian field strength vanishes -- the commutator F_NA = 2*E*sigma_x is zero everywhere because at twin primes E=0 while sigma_x is nonzero, and at single-rail primes sigma_x=0. The monad sees the Abelian shadow of the Standard Model, not the full non-Abelian structure. The coupling hierarchy is naturally reproduced: electromagnetic coupling (Chebyshev bias) = 0.0005, weak coupling (twin prime rate) = 0.116, strong coupling (cross-generation rate) = 0.661. The ratio is 1:212:1208. The 12 monad positions decompose as 2 x 2 x 3 -- exactly the torus decomposition of the Standard Model fermion space. The monad IS the Standard Model seen through its Abelian projection."*
 
 *"If spacetime is discrete at the Planck scale, the monad's 6k+/-1 structure IS that discretization. The walking sieve is photon propagation -- parallel transport of the chi_1 gauge connection through the lattice at speed c = l_P/t_P = 1. Wilson loops on every path give |W| = 1: flat connection, no confinement, long-range Coulomb force, massless photon. The monad explains WHY electromagnetism has U(1) structure: because U(1) IS the symmetry of the discrete lattice at the Planck scale. The 12 angular positions reduce to 2 physical polarization states via gauge equivalence. The chi_1 zeros on Re(s)=1/2 are the photon's energy levels. The E field thermalizes to zero at large scales by Dirichlet equidistribution -- the vacuum is neutral. What the monad does NOT predict is the fine structure constant alpha = 1/137 -- the gauge structure is right, but the coupling strength is a free parameter. The monad is not a luminiferous aether in the classical sense. It is the discrete topology of spacetime itself, through which U(1) gauge excitations -- photons -- propagate."*
+
+*"The bare coupling L(1) = pi/(2*sqrt(3)) ~ 0.9 runs. The E field -- rail asymmetry -- thermalizes to zero as Dirichlet equidistribution takes hold. The effective coupling alpha_eff(W) = L(1) * W^(-1.09) follows a power law, faster than QED's logarithmic running. But here's the striking result: the logarithmic fit alpha(W) = L(1)/(1 + 3.26*log(W)) matches alpha = 1/137 at the electroweak scale (~80 GeV) with ratio 1.00. The monad predicts alpha at the UNIFICATION scale, and the Standard Model running takes over below. Each prime p IS a photon mode: lambda = p*l_P, nu = 1/(p*t_P), and 1/lambda bridges length and frequency. The coupling at that wavelength is alpha_eff(p) = L(1)/(1 + b*log(p)). Prime anti-clustering (C(1)/C(0) = -0.055) enhances the screening beyond what QED's one-loop beta function gives. The monad doesn't predict alpha from first principles -- but it explains the mechanism: the discrete lattice thermalizes, the coupling runs, and at the right scale it hits 1/137."*
