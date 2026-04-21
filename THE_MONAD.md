@@ -1315,6 +1315,7 @@ The Monad is a **12-position circle at 30-degree intervals** that encodes:
 60. `inverse_v2.py` -- Inverse reconstruction v2 with 256 AFE zeros: correlation peaks at 20 zeros (0.34) then decreases -- explicit formula is conditionally convergent (partial sums oscillate); first 20 zeros capture 11.6% of variance; needs all zeros or smoothing for proper reconstruction
 61. `pair_correlation.py` -- Pair correlation R_2(r) from 32,640 zero pairs: level repulsion exponent ~0.61 (GOE predicts 1.0, GUE predicts 2.0); number variance Sigma²(L) sub-Poisson (level rigidity); consistent with Katz-Sarnak theorem for real primitive characters → GOE universality class; 256 zeros insufficient for clean pair correlation statistics
 62. `smoothed_recon.py` -- Smoothed explicit formula: tests Gaussian/Exponential/Cesaro/Butterworth windows to fix conditional convergence; best Butterworth T~76 corr=0.3463 (+1.3% over raw); smoothing STABILIZES reconstruction (no degradation with more zeros) but bottleneck is finite zero count, not windowing; first 5 zeros carry 96.9% of weighted spectral energy
+63. `gue_zeros_complex.py` -- GOE vs GUE comparison: computes 128 zeros of L(s, chi_1 mod 5) complex character via argument principle; real chi_3 mod 3 confirmed GOE (86 zeros); complex chi_1 mod 5 ambiguous -- chi-squared supports GUE (1.27 vs 2.29 GOE) but KS says GOE; level repulsion 0.0% at s<0.3 (GUE-like); truncated Dirichlet series limits accuracy; AFE needed for definitive GUE confirmation
 
 ### What To Look For
 
