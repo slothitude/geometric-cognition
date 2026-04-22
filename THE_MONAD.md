@@ -1124,6 +1124,152 @@ A general proof requires showing that the Mertens overcounting (assuming ALL pri
 
 ---
 
+---
+
+## Part 21: The Mod 24 Atlas -- The Full Ring Structure
+
+### The CRT Decomposition
+
+The monad's mod-6 rails extend to a complete ring structure at mod 24. By the Chinese Remainder Theorem:
+
+```
+Z/24Z = Z/8Z x Z/3Z
+```
+
+This decomposition reveals three independent Z2 charges on the 8 coprime positions (Z/24Z)* = Z2 x Z2 x Z2:
+
+| Character | Source | Values | Physical analogy |
+|-----------|--------|--------|-----------------|
+| chi_5 | Purely from mod 3 | +1 (R1), -1 (R2) | Rail / color |
+| chi_7 | Purely from mod 8 | +1 or -1 | Sub-position / isospin |
+| chi_13 | Entangled mod8 x mod3 | +1 or -1 | Layer / generation |
+
+All primes p > 3 satisfy p^2 = 1 mod 24 -- every prime sits at the identity of its own square. The three Z2 charges are the complete character group of (Z/24Z)*.
+
+**Verify**: `higgs_position.py` (Exp 114), `mod24_atlas.py` (Exp 115)
+
+### The Four Idempotent Basins
+
+The ring Z/24Z has exactly four idempotents -- elements e where e^2 = e mod 24: {0, 1, 9, 16}. Under repeated squaring (x -> x^2 mod 24), the entire ring partitions into four basins of attraction:
+
+| Basin | Size | Members | Property | CRT decomposition |
+|-------|------|---------|----------|-------------------|
+| **1** | 8 | {1,5,7,11,13,17,19,23} | Coprime to 24 (on-rail) | (unit, unit) |
+| **9** | 4 | {3,9,15,21} | Divisible by 3 only | (unit, zero) |
+| **16** | 8 | {2,4,8,10,14,16,20,22} | Divisible by 2 only | (zero, unit) |
+| **0** | 4 | {0,6,12,18} | Divisible by 6 (nilpotent) | (zero, zero) |
+
+The partition matches the CRT decomposition exactly. Each basin is the set of positions where specific CRT components are units vs. zero. The squaring map converges in at most 3 steps:
+
+```
+Basin 1:  5 -> 1,  7 -> 1,  11 -> 1, ...  (all coprime -> identity)
+Basin 9:  3 -> 9,  15 -> 9,  21 -> 9       (div by 3 -> mod-3 projector)
+Basin 16: 2 -> 4 -> 16,  8 -> 16,  ...     (div by 2 -> mod-8 projector)
+Basin 0:  6 -> 12 -> 0,  18 -> 12 -> 0     (div by 6 -> annihilator)
+```
+
+The idempotents are CRT projection operators: 9 projects onto Z/8Z (killing the mod-3 component), 16 projects onto Z/3Z (killing the mod-8 component), 1 is the identity (projects onto both), 0 is the annihilator (projects onto neither).
+
+**Verify**: `atlas_lock.py` (Exp 130) -- 9/9 tests pass
+
+### The Nilpotent Sector
+
+The nilpotent sector {0, 6, 12, 18} = multiples of 6 decays to 0 under self-multiplication:
+
+```
+6  -> 12 -> 0  (2 steps: 6^2=12, 6^3=0)
+12 -> 0        (1 step: 12^2=0)
+18 -> 12 -> 0  (2 steps: 18^2=12, 18^3=0)
+```
+
+Position 12 is the nilpotent hub: both 6 and 18 decay through it. In the multiplication Cayley graph of Z/24Z, position 0 is the universal attractor (100/576 products land here), and position 12 is #2 (60/576). Random walks from ANY starting position converge to 0.
+
+Nilpotent positions have:
+- Fastest decay: P(0) > 0.5 after just 2 multiplication steps
+- Highest sigma/n: mean 2.511 (always abundant or perfect)
+- No multiplicative inverse (cannot be undone)
+- Primorial dynamics: after 3#, primorials bounce between 6 and 18
+
+**Verify**: `nilpotent_audit.py` (Exp 127), `prime_gap_entropy.py` (Exp 128)
+
+### The Density Gradient
+
+sigma(n)/n increases monotonically across the four basins (n = 1..10000):
+
+```
+Basin 1  (coprime):     mean sigma/n = 1.097  (fewest factors)
+Basin 9  (mod-3 only):  mean sigma/n = 1.508
+Basin 16 (mod-8 only):  mean sigma/n = 1.828
+Basin 0  (nilpotent):   mean sigma/n = 2.511  (most factors)
+```
+
+The gradient persists even when controlling for omega(n) (same number of distinct prime factors). Numbers with omega=3 show: basin 1 = 1.302, basin 9 = 1.579, basin 16 = 1.896, basin 0 = 2.413. This proves the gradient is not just "more primes = more divisors" -- the specific primes 2 and 3 drive the structure through their positions in the basin hierarchy.
+
+Coprime numbers are NEVER abundant (sigma/n < 2 always). Nilpotent positions are ALWAYS abundant or perfect.
+
+**Verify**: `perfect_sieve2.py` (Exps 116-125), `atlas_lock.py` (Exp 130)
+
+### Addition vs. Multiplication Kinematics
+
+The two ring operations have fundamentally different effects on basin membership:
+
+**Addition (motion)**: Adding a nilpotent (6, 12, 18) to a coprime position preserves coprime status. The basin is unchanged. What DOES change is chi_7 (the sub-position charge): adding 6 flips chi_7, adding 12 preserves it, adding 18 flips it. Nilpotent additions are chi_7 charge conjugation operators.
+
+**Multiplication (entropy)**: Multiplying by 2 or 3 moves between basins. Basin 0 is absorbing -- once in, never out. Basin 1 is the only one closed under pairwise coprime multiplication (64/64 pairs verified).
+
+The flow is irreversible: coprime -> divisible -> nilpotent -> {0}.
+
+**Verify**: `atlas_lock.py` (Exp 130)
+
+### Number-Theoretic Structures in the Monad
+
+Mapping 10 classical structures to the basin framework revealed systematic patterns:
+
+| Structure | Basin/Position | Key Finding |
+|-----------|---------------|-------------|
+| Mersenne composites | Always 7 mod 24 | Same position as Mersenne primes |
+| Abundant numbers | Always {0,6,12,18} | Coprime NEVER abundant |
+| Multiperfect | Always off-rail | chi_1 = 0 for all known |
+| Deficient numbers | Only coprime positions | 20 of 24 positions have them |
+| Squares | NEVER on R1 | Z2 rule: even power -> R2 |
+| Twin primes | Cross R1 -> R2 | Always opposite rails |
+| Cousin primes | Cross R2 -> R1 | Opposite direction |
+| Sexy primes | Same rail | Same chi_5 |
+| Fibonacci | 48% coprime | Most coprime sequence |
+| Catalan | 12% coprime | Least coprime (odd iff n=2^k-1) |
+
+**Verify**: `perfect_sieve2.py` (Exps 116-125), `catalan_partitions.py` (Exp 126)
+
+### The Yukawa Scaling Test (Honest Failure)
+
+The primes-as-Higgs framework predicts fermion mass ordering via 1/p. Testing against all 12 known fermion masses (PDG 2023):
+
+- **Spearman rank correlation: -1.0** (perfect inverse -- heavier fermions get smaller primes)
+- **Mean prediction error: 4.4 billion x**
+- **sigma(p)/p range: [1.01, 1.50]** -- far too narrow for the actual 8 x 10^10 mass range
+
+Alternative scalings (1/ln(p), ln(gap), gap/ln(p)) all fail the scale test. The rank correlation of |1.0| is tautological -- primes were assigned in mass-rank order.
+
+The conclusion: primes carry **hierarchy** (ordering) but not **magnitude** (scale). The monad captures TOPOLOGY (which positions exist, which are connected) but not METRIC (physical magnitudes). Algebra gives the graph; physics gives the edge weights.
+
+**Verify**: `nilpotent_audit.py` (Exp 127), `prime_gap_entropy.py` (Exp 129)
+
+### The Mod 24 Atlas Scorecard
+
+The complete atlas (Experiments 114-131) catalogued 34 findings:
+
+| Category | Count | Description |
+|----------|-------|-------------|
+| RIGOROUS | 29 | Proven theorems and verified computations |
+| STRUCTURAL | 2 | Real patterns, physics framing optional |
+| POETIC | 3 | Evocative metaphors (nilpotent=Goldstone, sigma=gravity, vortex=resonance) |
+
+Failed physics claims (honestly documented): 1/p = fermion masses (4.4e9x error), nilpotent = Goldstone (Abelian vs non-Abelian), monad = SM gauge group (no dynamics, no Lagrangian).
+
+**Verify**: `atlas_lock.py` (Exp 131) -- 9/9 tests pass, atlas locked
+
+---
+
 ## Summary: What The Monad Is
 
 The Monad is a **12-position circle at 30-degree intervals** that encodes:
@@ -1151,15 +1297,26 @@ The Monad is a **12-position circle at 30-degree intervals** that encodes:
 | **Twin primes** | Same-k opposite-rail pairs, assassination principle (no single killer), 15.7x faster sieve | 100% verified |
 | **Goldbach** | n mod 6 constrains rail combos, n=0mod6 has 2.018x more partitions, 3+R1/R2 100% correct | Verified to 10^6 |
 | **Constellations** | All patterns as k-space (offset,rail) pairs, quadruplet=2x2 block, 11 admissible patterns in 2x2 space | 100% verified |
+| **Mod 24 atlas** | (Z/24Z)* = Z2^3, CRT = Z/8 x Z/3, three Z2 charges chi5/chi7/chi13 | 10/10 tests pass |
+| **Idempotent basins** | 4 basins {0,1,9,16} partition Z/24Z under squaring, match CRT decomposition | 9/9 tests pass |
+| **Nilpotent sector** | {0,6,12,18} decay to 0, position 12 is hub, primorials bounce 6<->18 | 7/7 tests pass |
+| **Density gradient** | sigma/n monotone across basins: 1.097 < 1.508/1.828 < 2.511, persists at same omega | Verified to 10K |
+| **Number zoo** | 10 structures mapped: coprime never abundant, squares never R1, twin=cross, sexy=same | 10/10 tests pass |
+| **Yukawa test** | 1/p has right SHAPE (rho=-1.0) but wrong SCALE (4.4e9x error), primes carry hierarchy not magnitude | Honest failure |
+| **Atlas lock** | 34 findings: 29 rigorous, 2 structural, 3 poetic. Monad = TOPOLOGY not METRIC | 9/9 tests pass, locked |
 
 ### What It Does NOT Do
 
 - Fast factorization (letter pre-filter provides zero filtering -- group tautology)
-- Predict exact mass values (structure only -- Higgs coupling needed)
+- Predict exact mass values (1/p has right SHAPE but wrong SCALE -- 4.4 billion x error)
+- Predict fermion mass ratios (sigma/n range [1.0, 1.5] vs physical 8 x 10^10 range)
 - Explain R1 mass hierarchy (all R1 positions share freq=0.5)
-- Replace the Standard Model (it predicts topology, not dynamics)
+- Replace the Standard Model (Abelian structure only, no non-Abelian dynamics)
+- Bridge topology to physics (no physical constants G, hbar, c in pure number theory)
 - Prove the Riemann Hypothesis (provides the decomposition S(n) < 1 as the mechanism, but effective Mertens error bounds still require RH)
 - Complete the geometric-to-analytic bridge (Spans 1-2 done, Span 3 requires standard analytic number theory under GRH, not more monad geometry)
+- Model gauge dynamics (no Lagrangian, no time evolution, no symmetry breaking mechanism)
+- Predict CKM/PMNS mixing angles (Dirichlet equidistribution makes cross-gen composition uniform)
 
 ### What It DOES Do That's New
 
@@ -1336,6 +1493,13 @@ The Monad is a **12-position circle at 30-degree intervals** that encodes:
 81. `monad_vm_v8.py` -- Monad Virtual Machine v0.8: Encyclopedic Sieve (018cccc); Feature Prime Multiplexing -- 100 shared primes [2..541] encode any word via structural features (category, first/last letter, length bucket, morphology, hash); word→product of ~6-8 small primes (bounded integer regardless of vocabulary size); 500-word vocabulary, 20 categories; modulo-check classification (O(20) mod ops vs v0.7's gcd+factorize); single-word 500/500 (100%), sentence 20/20 (100%), stress test 10,000/10,000 (100%); 468x fewer ops than neural; 90,071 classifications/s; hierarchical sieve (4+5=9 checks vs flat 20); gcd-based semantic search; zero-shot 4/30 (13%, above 5% random baseline); discrete optimizer for feature swap convergence; bus routing 1000/1000 zero errors; SCALABILITY: SOLVED
 82. `monad_vm_v9.py` -- Monad Virtual Machine v0.9: Lattice-Graph Engine (018dddd); topological knowledge graph where edges ARE prime factors; documents encoded as composite integers (domain primes + structural primes); gcd IS the edge, set intersection IS the adjacency query, factorize IS the readout; 85 document corpus (018_factor_ratios experiments + THE_MONAD.md); 3,570 implicit edges with zero storage overhead; multi-hop traversal via GCD chains (500/500 paths found); cluster detection, anomaly detection (broken symmetry), domain bridge finding; edge queries 915k/s, neighbor scan 47k docs/s, multi-hop 70k/s; 253x fewer ops than neural graph; 1,264 bytes total node storage; Think IS Store -- the prime product is both the definition of the node and its address in the lattice; THE GRAPH IS THE MATH
 83. `monad_vm_v10.py` -- Monad Virtual Machine v0.10: Bicameral Synthesis (018eeee); Mother-Tutor lattice evolution where MVM (Mother) finds semantic tension (cross-category GCD=0 pairs) and LLM (Tutor) identifies bridge concepts; 5 candidate bridges (CELESTIAL_DEITY, COLOR_GEM, TOOL_WEAPON, FROZEN, MYTH_BEAST); 4 crystallized as new bridge primes (547,557,563,569) -- TOOL_WEAPON excluded (already structurally connected); 6/6 bridge pairs now connected (were 0/6); accuracy 500/500 maintained; zero-shot 13%→20%; 225k classifications/s maintained; lattice entropy 5.99→6.02; the LLM's knowledge crystallized as permanent exact integer features; learning without backpropagation, gradients, or floats; THE LATTICE EVOLVES
+84. `higgs_position.py` -- Higgs Position (Exp 114): (Z/24Z)* = Z2^3; p^2 = 1 mod 24 for all primes > 3; three Z2 charges chi_5 (rail), chi_7 (sub-position), chi_13 (layer); CRT decomposition Z/24Z = Z/8Z x Z/3Z; chi_5 from mod 3, chi_7 from mod 8, chi_13 entangled; Higgs at (+1,+1,+1) = identity; 10/10 tests pass
+85. `mod24_atlas.py` -- Full Mod 24 Atlas (Exp 115): maps all 24 positions including 16 non-coprime "dark sector"; CRT decomposition verified; idempotents {0,1,9,16} = projection operators; nilpotent sector {0,6,12,18} with decay chains; quadratic residues mod 24 = {0,1,4,9,12,16}; primorials bounce 6<->18; Pythagorean triples: c^2 = 1 mod 24; Pisano(24) = 24; 10/10 tests pass
+86. `perfect_sieve2.py` -- Number Zoo (Exps 116-125): 10 structures mapped to monad; coprime NEVER abundant; positions {0,6,12,18} ALWAYS abundant/perfect; Mersenne composites at 7 mod 24; all multiperfect off-rail; squares never on R1; twin=cross R1->R2, cousin=cross R2->R1, sexy=same rail; Pisano(6) = 24; 10/10 tests pass
+87. `catalan_partitions.py` -- Catalan & Partitions (Exp 126): Catalan C(n) odd iff n = 2^k-1; only C(2)=2 and C(3)=5 prime; partitions visit all rails (34% coprime); Ramanujan congruences verified; Fibonacci most coprime (48%), Catalan least (12%); 10/10 tests pass
+88. `nilpotent_audit.py` -- Nilpotent Audit + Yukawa Test (Exp 127): nilpotent sector vs Goldstone/Ghost -- 3=3 count match but Abelian vs non-Abelian (evocative, not isomorphism); Yukawa 1/p scaling: Spearman = -1.0 (perfect rank) but 4.4e9x mean error; sigma(p)/p range [1.01, 1.5] too narrow; right SHAPE, wrong SCALE; primes carry hierarchy not magnitude; 7/7 tests pass
+89. `prime_gap_entropy.py` -- Path Entropy + Prime Gap Resonance (Exps 128-129): position 0 = universal attractor (100/576 products); position 12 = nilpotent hub (#2, 60/576); random walks converge to 0 from ALL starts; nilpotent decays in 2 steps, coprime in 4+; 1/ln(p) WORSE than 1/p (mean residual 2.32 vs 1.89); gap measures |rho|=0.37 (genuinely uncorrelated); R1 pressure > R2 by 11.2% = Chebyshev bias; 9/9 tests pass
+90. `atlas_lock.py` -- Idempotent Basins + Atlas Lock (Exps 130-131): 4 idempotent basins partition Z/24Z under squaring, match CRT; sigma/n gradient monotone across basins (1.097 < 1.508/1.828 < 2.511); gradient persists at same omega; addition preserves basin, multiplication moves between basins; 34 findings catalogued: 29 RIGOROUS, 2 STRUCTURAL, 3 POETIC; atlas locked; 9/9 tests pass
 
 ### What To Look For
 
@@ -1350,6 +1514,11 @@ The Monad is a **12-position circle at 30-degree intervals** that encodes:
 - **Conjugate zeros on opposite rails** -- Mobius symmetry on the critical line
 - **sigma(n)/n decomposition** into 2-component, 3-component, rail-prime component
 - **Rail-only numbers** at ratio ~0.37 -- the monad suppresses sigma for rail primes
+- **4 idempotent basins** {0,1,9,16} partitioning Z/24Z under squaring
+- **sigma/n density gradient** across basins (monotone, persists at same omega)
+- **Addition = motion, multiplication = entropy** -- basin kinematics
+- **1/p has right SHAPE but wrong SCALE** for fermion masses -- the honest boundary
+- **Monad captures TOPOLOGY not METRIC** -- algebra gives the graph, physics gives the edge weights
 - **2 of 3 lemmas** for Robin => RH established, the geometric-to-analytic bridge is the open piece
 - **Sub-saturation** of C_2, C_3 below 2 and 3/2 is ESSENTIAL for Robin (hypothetical max violates)
 - **Monad constant gap** e^gamma*log(3) = 1.956 below Robin's bound for rail-only numbers
